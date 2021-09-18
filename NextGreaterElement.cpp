@@ -18,9 +18,12 @@ vector<int> getNextGreaterElement(vector<int>input, int size){
         return nextGreater;
     }
     stkOfIndx.push(0);
-    int topIndx;
+    int topIndx = 0;
     for(int i=1;i<input.size();i++){
-        topIndx =stkOfIndx.top();
+        if(stkOfIndx.empty()){
+            stkOfIndx.push(i);
+            continue;
+        }
         if(input[i] <= input[topIndx]){
             stkOfIndx.push(i);
         }
@@ -32,10 +35,10 @@ vector<int> getNextGreaterElement(vector<int>input, int size){
                     stkOfIndx.pop();
                 }
                 else{
-                    stkOfIndx.push(i);
                     break;
                 }
             }
+            stkOfIndx.push(i);
         }
     }
     while(!stkOfIndx.empty()){
