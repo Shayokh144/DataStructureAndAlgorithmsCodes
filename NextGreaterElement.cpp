@@ -24,6 +24,7 @@ vector<int> getNextGreaterElement(vector<int>input, int size){
             stkOfIndx.push(i);
             continue;
         }
+        topIndx = stkOfIndx.top();
         if(input[i] <= input[topIndx]){
             stkOfIndx.push(i);
         }
